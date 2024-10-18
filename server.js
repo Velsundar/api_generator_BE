@@ -4,6 +4,7 @@ const fastify = require("fastify")({
 });
 const fs = require("fs-extra");
 const { spawn } = require("child_process");
+require('dotenv').config();
 
 const API_DIR = "./generated-apis";
 fs.ensureDirSync(API_DIR); // Create directory if it doesn't exist
@@ -88,7 +89,8 @@ fastify.post("/api/generate", async (request, reply) => {
         // Step 4: Push the changes to the remote repo
         const gitPush = spawn('git', ['push', '--verbose', '--progress'], {
             cwd: __dirname,
-            env: { ...process.env, GIT_TRACE: '1' } // Set the environment variable properly
+            env: { ...process.env, GIT_TRACE: '1' },
+            GITHUB_TOKEN: process.env.GITHUB_TOKEN // Set the environment variable properly
           });
 
 
