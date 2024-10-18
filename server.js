@@ -86,7 +86,10 @@ fastify.post("/api/generate", async (request, reply) => {
         console.log("Commit successful");
 
         // Step 4: Push the changes to the remote repo
-        const gitPush = spawn('git', ['push', '--verbose', '--progress', 'GIT_TRACE=1'], { cwd: __dirname });
+        const gitPush = spawn('git', ['push', '--verbose', '--progress'], {
+            cwd: __dirname,
+            env: { ...process.env, GIT_TRACE: '1' } // Set the environment variable properly
+          });
 
 
         gitPush.stdout.on('data', (data) => {
