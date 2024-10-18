@@ -102,12 +102,12 @@ fastify.post("/api/generate", async (request, reply) => {
         
         gitPush.on('close', (code) => {
             if (code !== 0) {
-                console.error(`Git push failed with code ${code}`);
-                return reply.code(500).send({ error: 'Failed to push to remote repo' });
+              console.error(`Git push failed with code ${code}`);
+              return reply.code(500).send({ error: 'Failed to push to remote repo' }); // Ensure you exit after sending the reply
             }
             console.log('Push to remote repo successful');
-            reply.send({ message: `API generated and pushed to repo successfully.` });
-        });      });
+            return reply.send({ message: `API generated and pushed to repo successfully.` });
+          });      });
     });
   } catch (error) {
     console.error("Error during API generation process:", error);
