@@ -1,0 +1,20 @@
+{
+  "name": "api_generator-be",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "fastify": "^5.0.0",
+    "fastify-plugin": "^5.0.1",
+    "fs-extra": "^11.2.0",
+    "nodemon": "^3.1.7",
+    "simple-git": "^3.27.0"
+  }
+}
